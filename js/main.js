@@ -7,15 +7,18 @@ const km = prompt("Quanti km devi percorrere");
 const eta = prompt("inserisci la tua età");
 
 //calcolo il prezzo del biglietto
-if (eta < 18 && eta > 65) {
-    console.log (1)
+console.log (km * 0.21)
+const prezzo = (km * 0.21)
 
-} else if (eta < 18) {
-    console.log (2)
-
-} else if (eta > 65) {
-    console.log (3)
-
+//calcolo sconto per minorenni
+ if (eta < 18) {
+    const importo = ((prezzo * 20) / 100)
+    console.log (prezzo - importo)
+}
+//calcolo sconto per anziani
+else if (eta > 65) {
+    const importo = ((prezzo * 40) / 100)
+    console.log (prezzo - importo)
 }
 
 
