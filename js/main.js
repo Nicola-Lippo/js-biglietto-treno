@@ -1,26 +1,32 @@
 "use strict";
 
-//definisco la variabile KM che deve percorrere 
-const km = prompt("Quanti km devi percorrere");
-
+//definisco la variabile KM che deve percorrere
+const kmUser = Number(prompt("Inserisci il numero di Km che devi percorrere"));
+console.log({kmUser});
 //definisco la variabile ETA' dell'utente
-const eta = prompt("inserisci la tua età");
+const etaUser = parseInt(prompt("Inserisci la tua età"));
+console.log({etaUser});
 
-//calcolo il prezzo del biglietto
-console.log (km * 0.21)
-const prezzo = (km * 0.21)
+//variabile fissa € al Km
+const prezzoKm = 0.21;
+//variabille dell' età per scontistica
+const minori = 18;
+const anziani = 65;
+//variabille della % di sconto
+const scontoMinori = 20;
+const scontoAnziani = 40;
+//definisco il prezzo del biglietto
+let prezzo = prezzoKm * kmUser
+let prezzoScontato = 0
 
-//calcolo sconto per minorenni
- if (eta < 18) {
-    const importo = ((prezzo * 20) / 100)
-    console.log (prezzo - importo)
+//formule scontistica
+if (etaUser < minori) {
+    console.log("utente minorenne");
+    prezzoScontato = (prezzo / 100 * scontoMinori);
+} else if (etaUser > anziani) {
+    console.log("utente anziano");
+    prezzoScontato = (prezzo / 100 * scontoAnziani);
 }
-//calcolo sconto per anziani
-else if (eta > 65) {
-    const importo = ((prezzo * 40) / 100)
-    console.log (prezzo - importo)
-}
+prezzo -= prezzoScontato;
 
-
-
-console.log ("sono collegato")
+console.log(`Il prezzo finale del biglietto è ${prezzo.toFixed(2)}€`);
